@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour{
     private InputString inputString;
     private float groundDetectRadius = 0.2f;
     private bool isFacingRight = true;
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    private float jumpBufferTime = 0.2f;
+    private float jumpBufferTimeCounter;
 
     private void Awake() {
         inputString = new InputString();
@@ -47,6 +51,8 @@ public class PlayerMovement : MonoBehaviour{
         rb = GetComponent<Rigidbody2D>();
         inputString.SetPlayerInput(this.playerType);
         groundDetectRadius = 0.2f;
+        coyoteTime = 0.2f;
+        jumpBufferTime = 0.2f;
     }
     private void Update() {
         CheckInput();
@@ -75,8 +81,22 @@ public class PlayerMovement : MonoBehaviour{
         }
     }
     private void Jump() {
-        if (Input.GetButtonDown(inputString.Jump) && IsOnGround()) {
+        if (IsOnGround()) {
+            //can jump while off the ground of 0.2 seconds
+            coyoteTimeCounter = coyoteTime;
+        } else {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+        if (Input.GetButtonDown(inputString.Jump)) {
+            //can jump if pressed jump button a bit soon before hitting the gound
+            jumpBufferTimeCounter = jumpBufferTime;
+        } else {
+            jumpBufferTimeCounter -= Time.deltaTime;
+        }
+        if (jumpBufferTimeCounter > 0f && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimeCounter = 0;
+            jumpBufferTimeCounter = 0;
         }
     }
     private void CounterJump() {
