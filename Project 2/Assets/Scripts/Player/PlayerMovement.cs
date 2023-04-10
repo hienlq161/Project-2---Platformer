@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum PlayerType {
+    Player1,
+    Player2
+}
+
 public class PlayerMovement : MonoBehaviour{
-    enum PlayerType {
-        Player1,
-        Player2
-    }
     
     [SerializeField] PlayerType playerType = PlayerType.Player1;
     [SerializeField] float movementSpeed = 5f;
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour{
         public string Jump = "Jump";
         public string Down = "Down";
         
-        public void SetPlayerInput(PlayerType playerType) {
+        public InputString(PlayerType playerType) {
             if (playerType == PlayerType.Player1) {
                 Horizontal += "1";
                 Jump += "1";
@@ -45,11 +46,10 @@ public class PlayerMovement : MonoBehaviour{
     private float jumpBufferTimeCounter;
 
     private void Awake() {
-        inputString = new InputString();
+        inputString = new InputString(this.playerType);
     }
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
-        inputString.SetPlayerInput(this.playerType);
         groundDetectRadius = 0.2f;
         coyoteTime = 0.2f;
         jumpBufferTime = 0.2f;
