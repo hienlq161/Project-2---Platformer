@@ -8,14 +8,18 @@ enum PlayerType {
 }
 
 public class PlayerMovement : MonoBehaviour{
-    
+
+    [HideInInspector] public bool isFacingRight = true;
+
     [SerializeField] PlayerType playerType = PlayerType.Player1;
+    [Header("Player Stats")]
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float counterJump = 100f;
+
+    [Header("Caching attributes")]
     [SerializeField] Transform groundCheckPoint;
     [SerializeField] LayerMask groundLayer;
-
     Rigidbody2D rb;
 
     class InputString {
@@ -39,7 +43,6 @@ public class PlayerMovement : MonoBehaviour{
     private bool isDownButtonPressed;
     private InputString inputString;
     private float groundDetectRadius = 0.2f;
-    private bool isFacingRight = true;
     private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
