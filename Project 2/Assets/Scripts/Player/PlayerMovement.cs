@@ -98,8 +98,11 @@ public class PlayerMovement : MonoBehaviour{
         }
         if (jumpBufferTimeCounter > 0f && coyoteTimeCounter > 0f) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            coyoteTimeCounter = 0;
+            //coyoteTimeCounter = 0;
             jumpBufferTimeCounter = 0;
+        }
+        if (Input.GetButtonUp(inputString.Jump)) {
+            coyoteTimeCounter = 0f;
         }
     }
     private void CounterJump() {
