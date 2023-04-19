@@ -71,7 +71,7 @@ public class Gun : MonoBehaviour{
     }
 
     private void Awake() {
-        SetGun(WeaponType.assaultRifle);
+        SetGun(WeaponType.handGun);
     }
 
     public void Fire() {
