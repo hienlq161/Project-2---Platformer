@@ -142,10 +142,16 @@ MonoBehaviour:
   snp_timePerFire: 0.8
   snp_knockBackPower: 5000
   snp_magazineCapacity: 20
+  s_bulletSpeed: 20
+  s_timePerFire: 0.8
+  s_knockBackPower: 1000
+  s_magazineCapacity: 8
+  spreadAngle: 35
   barrelEnd: {fileID: 7417943559057026726}
   handGunBullet: {fileID: 6591034445776437661, guid: c958ff79069b6d74093fc6960ba1c8b3, type: 3}
   assaultRifleBullet: {fileID: 5735215922513179893, guid: f7e588a1f3d1d5d45bcf563c56bcf75d, type: 3}
   snipingBullet: {fileID: 6191380907234090517, guid: 0f41a87851c2fc445b3425d2064ce6a8, type: 3}
+  shotGunBullet: {fileID: 9009441850445535487, guid: 90ea878790c256f4b98d05521c2360f5, type: 3}
   movementScript: {fileID: 0}
 --- !u!1 &3042981261729516443
 GameObject:

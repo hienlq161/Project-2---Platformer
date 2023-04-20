@@ -30,14 +30,6 @@ public class Gun : MonoBehaviour{
     [SerializeField] float snp_knockBackPower;
     [SerializeField] int snp_magazineCapacity;
 
-    [Header("Shotgun attributes")]
-    [SerializeField] float s_bulletSpeed;
-    [SerializeField] float s_timePerFire;
-    [SerializeField] float s_knockBackPower;
-    [SerializeField] int s_magazineCapacity;
-    [SerializeField] int spreadAngle;
-
-
     [Header("Caching attributes")]
     [SerializeField] Transform barrelEnd;
     [SerializeField] GameObject handGunBullet;
@@ -69,11 +61,7 @@ public class Gun : MonoBehaviour{
             magazineCapacity = a_magazineCapacity;
             bullet = assaultRifleBullet;
         } else if (weaponType == WeaponType.shotgun) {
-            bulletSpeed = s_bulletSpeed;
-            timePerFire = s_timePerFire;
-            knockBackPower = s_knockBackPower;
-            magazineCapacity = s_magazineCapacity;
-            bullet = shotGunBullet;
+            //not impelemted yet
         } else if (weaponType == WeaponType.snipingRifle) {
             bulletSpeed = snp_bulletSpeed;
             timePerFire = snp_timePerFire;
@@ -102,7 +90,7 @@ public class Gun : MonoBehaviour{
         allowFire = false;
         currentAmmo--;
         if (weaponType == WeaponType.shotgun) {
-            ShootShotgunBullet();
+
         } else {
             ShootNormalBullet();
         }
@@ -128,24 +116,8 @@ public class Gun : MonoBehaviour{
         for (int i = 0; i < 7; i++) {
             GameObject bulletClone;
             Rigidbody2D cloneRigidbody;
-            Vector2 forceDirection;
-            int randomNumber = Random.Range(-spreadAngle, spreadAngle);
-            Quaternion bulletAngle = Quaternion.Euler(0, 0, randomNumber);
-
-            bulletClone = Instantiate(bullet, barrelEnd.position, bulletAngle);
-
-            cloneRigidbody = bulletClone.GetComponent<Rigidbody2D>();
-            bulletClone.GetComponent<BulletBehavior>().SetKnockBackPower(knockBackPower);
-            forceDirection = new Vector2(Mathf.Cos(bulletAngle.z), Mathf.Sin(bulletAngle.z));
-            if (movementScript.isFacingRight) {
-                Vector3 bulletScale = bulletClone.transform.localScale;
-                bulletScale.x *= -1;
-                bulletClone.transform.localScale = bulletScale;
-                cloneRigidbody.velocity = bulletSpeed * forceDirection;
-            } else {
-                forceDirection *= -1;
-                cloneRigidbody.velocity = bulletSpeed * forceDirection;
-            }
+            int randomNumber;
+            
         }
     }
 }
