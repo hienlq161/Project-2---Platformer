@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34f12437526a4bc597b88bb0edb90f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 0
   playerCollider: {fileID: 1128921943}
 --- !u!61 &1128921943 stripped
 BoxCollider2D:
@@ -982,6 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34f12437526a4bc597b88bb0edb90f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerType: 1
   playerCollider: {fileID: 1222571846}
 --- !u!61 &1222571846 stripped
 BoxCollider2D:
