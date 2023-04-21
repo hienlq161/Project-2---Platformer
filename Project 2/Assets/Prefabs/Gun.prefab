@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   h_bulletSpeed: 20
-  h_timePerFire: 0.3
+  h_timePerFire: 0.4
   h_knockBackPower: 2000
   h_magazineCapacity: 99999999
   a_bulletSpeed: 20
@@ -140,11 +140,11 @@ MonoBehaviour:
   a_magazineCapacity: 30
   snp_bulletSpeed: 30
   snp_timePerFire: 0.8
-  snp_knockBackPower: 5000
+  snp_knockBackPower: 6000
   snp_magazineCapacity: 20
   s_bulletSpeed: 20
   s_timePerFire: 0.8
-  s_knockBackPower: 1000
+  s_knockBackPower: 1200
   s_magazineCapacity: 8
   spreadAngle: 35
   barrelEnd: {fileID: 7417943559057026726}
