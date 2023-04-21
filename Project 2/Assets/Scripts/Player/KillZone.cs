@@ -10,7 +10,6 @@ public class KillZone : Respawn
         {
             Destroy(collision.gameObject);
             RespawnPlayer();
-            //heart--;
         }
     }
 }

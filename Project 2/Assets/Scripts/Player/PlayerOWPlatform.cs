@@ -4,13 +4,30 @@ using UnityEngine;
 
 public class PlayerOWPlatform : PlayerMovement
 {
-    private GameObject currentOWPlatform;
+    [SerializeField] PlayerType playerType;
+    
     [SerializeField] private BoxCollider2D playerCollider;
+    
+    private GameObject currentOWPlatform;
+    private InputString inputString;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+    private class InputString {
+        public string Down = "Down";
+        public InputString(PlayerType playerType) {
+            if (playerType == PlayerType.Player1) {
+                Down += "1";
+            }else if(playerType == PlayerType.Player2) {
+                Down += "2";
+            }
+        }
+    }
+
+    private void Awake() {
+        inputString = new InputString(playerType);
+    }
+
+    void Update(){
+        if (Input.GetButtonDown(inputString.Down))
         {
             if (currentOWPlatform != null)
             {
