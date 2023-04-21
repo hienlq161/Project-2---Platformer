@@ -47,6 +47,8 @@ public class PlayerMovement : MonoBehaviour{
     private float coyoteTimeCounter;
     private float jumpBufferTime = 0.2f;
     private float jumpBufferTimeCounter;
+    public Vector3 lastGroundPosition;//vị trí cuối cùng chạm đất
+
 
     private void Awake() {
         inputString = new InputString(this.playerType);
@@ -114,4 +116,10 @@ public class PlayerMovement : MonoBehaviour{
     private bool IsOnGround() {
         return Physics2D.OverlapCircle(groundCheckPoint.position, groundDetectRadius, groundLayer);
     }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+            lastGroundPosition = collision.contacts[0].point;
+    }
+
 }

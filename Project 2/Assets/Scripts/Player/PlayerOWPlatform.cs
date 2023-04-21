@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOWPlatform : MonoBehaviour
+public class PlayerOWPlatform : PlayerMovement
 {
     [SerializeField] PlayerType playerType;
     
