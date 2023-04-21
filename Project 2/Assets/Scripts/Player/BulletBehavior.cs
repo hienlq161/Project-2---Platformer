@@ -31,8 +31,10 @@ public class BulletBehavior : MonoBehaviour{
         movingDirection = (currentPosition - originPosition).normalized;
         playerRigidbody = collision.gameObject.GetComponent<Rigidbody2D>();
         playerRigidbody.constraints = RigidbodyConstraints2D.FreezePositionY;
+        playerRigidbody.freezeRotation = true;
         playerRigidbody.AddForce(movingDirection * knockBackPower);
         playerRigidbody.constraints &= ~RigidbodyConstraints2D.FreezePositionY; // unfreeze position Y
+        playerRigidbody.freezeRotation = true;
     }
 
     public void SetKnockBackPower(float value) {

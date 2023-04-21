@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOWPlatform : PlayerMovement
-{
+public class PlayerOWPlatform : MonoBehaviour{
     [SerializeField] PlayerType playerType;
     
     [SerializeField] private BoxCollider2D playerCollider;
@@ -38,7 +37,7 @@ public class PlayerOWPlatform : PlayerMovement
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("OWPlatform"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             currentOWPlatform = collision.gameObject;
         }
@@ -46,7 +45,7 @@ public class PlayerOWPlatform : PlayerMovement
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("OWPlatform"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             currentOWPlatform = null;
         }

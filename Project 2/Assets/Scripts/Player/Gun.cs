@@ -45,6 +45,10 @@ public class Gun : MonoBehaviour{
     [SerializeField] GameObject snipingBullet;
     [SerializeField] GameObject shotGunBullet;
     [SerializeField] PlayerMovement movementScript;
+    [SerializeField] Sprite handGun;
+    [SerializeField] Sprite assaultRifle;
+    [SerializeField] Sprite snipingRifle;
+    [SerializeField] Sprite shotgun;
 
     private WeaponType weaponType;
     private float bulletSpeed;
@@ -54,6 +58,7 @@ public class Gun : MonoBehaviour{
     private int currentAmmo;
     private GameObject bullet;
     private bool allowFire = true;
+    private SpriteRenderer spriteRenderer;
 
     public void SetGun(WeaponType weaponType) {
         if (weaponType == WeaponType.handGun) {
@@ -62,30 +67,35 @@ public class Gun : MonoBehaviour{
             knockBackPower = h_knockBackPower;
             magazineCapacity = h_magazineCapacity;
             bullet = handGunBullet;
+            spriteRenderer.sprite = handGun;
         } else if (weaponType == WeaponType.assaultRifle) {
             bulletSpeed = a_bulletSpeed;
             timePerFire = a_timePerFire;
             knockBackPower = a_knockBackPower;
             magazineCapacity = a_magazineCapacity;
             bullet = assaultRifleBullet;
+            spriteRenderer.sprite = assaultRifle;
         } else if (weaponType == WeaponType.shotgun) {
             bulletSpeed = s_bulletSpeed;
             timePerFire = s_timePerFire;
             knockBackPower = s_knockBackPower;
             magazineCapacity = s_magazineCapacity;
             bullet = shotGunBullet;
+            spriteRenderer.sprite = shotgun;
         } else if (weaponType == WeaponType.snipingRifle) {
             bulletSpeed = snp_bulletSpeed;
             timePerFire = snp_timePerFire;
             knockBackPower = snp_knockBackPower;
             magazineCapacity = snp_magazineCapacity;
             bullet = snipingBullet;
+            spriteRenderer.sprite = snipingRifle;
         }
         this.weaponType = weaponType;
         currentAmmo = magazineCapacity;
     }
 
     private void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         SetGun(WeaponType.handGun);
     }
 
