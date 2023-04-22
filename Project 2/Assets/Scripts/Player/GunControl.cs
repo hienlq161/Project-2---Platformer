@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunControl : MonoBehaviour{
     [SerializeField] PlayerType playerType = PlayerType.Player1;
 
-    [SerializeField] Gun myGun;
+    [SerializeField] public Gun myGun;
 
 
     class InputString {

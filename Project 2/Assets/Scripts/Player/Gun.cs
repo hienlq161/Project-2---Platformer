@@ -100,10 +100,11 @@ public class Gun : MonoBehaviour{
     }
 
     public void Fire() {
-        if (!allowFire) {
+        if (currentAmmo == 0) {
+            SetGun(WeaponType.handGun);
             return;
         }
-        if (currentAmmo == 0) {
+        if (!allowFire) {
             return;
         }
         StartCoroutine(FireProcedure());
